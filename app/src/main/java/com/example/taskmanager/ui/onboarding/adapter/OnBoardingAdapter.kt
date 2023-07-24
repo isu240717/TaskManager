@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.taskmanager.R
 import com.example.taskmanager.databinding.ItemOnboardingBinding
 import com.example.taskmanager.model.OnBoarding
 
@@ -12,9 +13,21 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
     Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
     private val data = arrayListOf(
-        OnBoarding("Test 1", "Desc 1", ""),
-        OnBoarding("Test 2", "Desc 2", ""),
-        OnBoarding("Test 3", "Desc 3", ""),
+        OnBoarding(
+            "To-do list!",
+            "Here you can write down something important or make a schedule for tomorrow:",
+            R.drawable.img1
+        ),
+        OnBoarding(
+            "Share your crazy idea ^_^",
+            "You can easily share with your report, list or schedule and it's convenient",
+            R.drawable.img2
+        ),
+        OnBoarding(
+            "Flexibility",
+            "Your note with you at home, at work, even at the resort",
+            R.drawable.img3
+        ),
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
@@ -41,12 +54,17 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
         fun bind(onBoarding: OnBoarding) {
             binding.tvTitle.text = onBoarding.title
             binding.tvDesc.text = onBoarding.desc
+            if (onBoarding.image != null) {
+                binding.ivBoard.setImageResource(onBoarding.image)
+            } else {
+                binding.ivBoard.setImageResource(R.drawable.ic_launcher_background)
+            }
             binding.btnStart.isVisible = adapterPosition == data.lastIndex
             binding.skip.isVisible = adapterPosition != data.lastIndex
-            binding.btnStart.setOnClickListener{
+            binding.btnStart.setOnClickListener {
                 onClick()
             }
-            binding.skip.setOnClickListener{
+            binding.skip.setOnClickListener {
                 onClick()
             }
         }

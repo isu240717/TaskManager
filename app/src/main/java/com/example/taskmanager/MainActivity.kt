@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 navView.isVisible = false
                 supportActionBar?.hide()
             } else {
-                navView.isVisible = false
+                navView.isVisible = destination.id != R.id.taskFragment
                 supportActionBar?.show()
             }
         }

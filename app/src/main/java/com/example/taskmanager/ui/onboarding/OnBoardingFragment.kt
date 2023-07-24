@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.FragmentOnBoardingBinding
-import com.example.taskmanager.databinding.FragmentProfileBinding
 import com.example.taskmanager.ui.onboarding.adapter.OnBoardingAdapter
+import me.relex.circleindicator.CircleIndicator3
 
 class OnBoardingFragment : Fragment() {
 
@@ -27,10 +27,19 @@ class OnBoardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewpager.adapter = adapter
+        setIndicator()
+
+    }
+
+    private fun setIndicator() {
+        val indicator: CircleIndicator3 = binding.dotsBoard
+        val viewPager =binding.viewpager
+        indicator.setViewPager(viewPager)
     }
 
     private fun onClick(){
         findNavController().navigate(R.id.navigation_home)
     }
+
 
 }
