@@ -5,13 +5,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.taskmanager.databinding.FragmentProfileBinding
 import com.example.taskmanager.extensions.loadImage
-import com.example.taskmanager.ui.utils.Preferences
+import com.example.taskmanager.data.local.Preferences
 
 class ProfileFragment : Fragment() {
 
@@ -49,7 +52,7 @@ class ProfileFragment : Fragment() {
         binding.etProfile.setText(preferences.getProfileData())
 
         val photoUri = preferences.getProfilePhotoUri()
-        if (photoUri != null) {
+        if (!photoUri.isNullOrEmpty()) {
             binding.imgProfile.loadImage(photoUri)
         } else {
             binding.imgProfile.loadImage(Preferences.imgUri)
@@ -76,6 +79,25 @@ class ProfileFragment : Fragment() {
                 binding.imgProfile.loadImage(it.toString())
                 preferences.saveProfilePhotoUri(it.toString())
             }
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.etProfile.setText(preferences.getName())
+        binding.etProfile.addTextChangedListener {
+            preferences.saveName(binding.etProfile.text.toString())
+            binding.etProfile.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    preferences.saveName(s.toString())
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                }
+            })
         }
     }
 }
