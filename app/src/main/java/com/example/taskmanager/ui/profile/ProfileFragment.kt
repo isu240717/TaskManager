@@ -71,6 +71,7 @@ class ProfileFragment : Fragment() {
         startActivityForResult(intent, REQUEST_IMAGE_PICK)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_PICK && resultCode == Activity.RESULT_OK) {

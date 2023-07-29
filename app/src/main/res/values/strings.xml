@@ -12,4 +12,8 @@
     <string name="skip">Skip</string>
     <string name="get_started">Get Started</string>
     <string name="save">Save</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_task">Delete task</string>
+    <string name="delete_task_confirmation">Delete task confirmation</string>
 </resources>
