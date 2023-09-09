@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "937203173909",
+    "project_id": "taskmanager-159b3",
+    "storage_bucket": "taskmanager-159b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937203173909:android:6bea124415f527f2a49c1c",
+        "android_client_info": {
+          "package_name": "com.example.taskmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937203173909-bkgu4ij8ba1c1io0arrfa15supji9b8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjFecsU8pkuL-6WD8zWsWvVovzlDeNX0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937203173909-bkgu4ij8ba1c1io0arrfa15supji9b8f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
