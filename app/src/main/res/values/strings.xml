@@ -16,4 +16,13 @@
     <string name="no">No</string>
     <string name="delete_task">Delete task</string>
     <string name="delete_task_confirmation">Delete task confirmation</string>
+    <string name="update">Update</string>
+    <string name="введите_номер_телефона">Введите номер телефона</string>
+    <string name="kod">Введите отправленый код</string>
+    <string name="accept">Accept</string>
+    <string name="phone_auth">Authorization via phone number</string>
+    <string name="gmail_auth">Authorization via Google account</string>
+    <string name="delete_account">delete account</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
 </resources>

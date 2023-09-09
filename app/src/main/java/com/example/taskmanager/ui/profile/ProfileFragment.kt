@@ -12,9 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.taskmanager.R
 import com.example.taskmanager.databinding.FragmentProfileBinding
-import com.example.taskmanager.extensions.loadImage
+import com.example.taskmanager.ui.utils.extensions.loadImage
 import com.example.taskmanager.data.local.Preferences
+import com.example.taskmanager.ui.utils.extensions.showToast
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
 
@@ -30,7 +34,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -89,7 +93,12 @@ class ProfileFragment : Fragment() {
         binding.etProfile.addTextChangedListener {
             preferences.saveName(binding.etProfile.text.toString())
             binding.etProfile.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int,
+                ) {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -99,6 +108,13 @@ class ProfileFragment : Fragment() {
                 override fun afterTextChanged(s: Editable?) {
                 }
             })
+        }
+
+        binding.btnDeleteAccount.setOnClickListener {
+            val lastUser: String? = FirebaseAuth.getInstance().currentUser.toString()
+            FirebaseAuth.getInstance().signOut()
+            showToast("lastUser signed out")
+            findNavController().navigate(R.id.authFragment)
         }
     }
 }
